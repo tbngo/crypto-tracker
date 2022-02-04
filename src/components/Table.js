@@ -3,8 +3,10 @@ import Entry from "./Entry"
 
 function Table() {
   return (
-    <div>
-      <Entry />
+    <div className="flex flex-col">
+      <Entry coin="BTC" />
+      <Entry coin="ETH" />
+      <Entry coin="DOGE" />
     </div>
   );
 }
