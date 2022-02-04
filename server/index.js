@@ -19,7 +19,7 @@ app.get("/api/coin", async (req, res) => {
       }
     });
 
-    const body = await response.text();
+    const body = await response.json();
 
     return res.json({
       success: true,
