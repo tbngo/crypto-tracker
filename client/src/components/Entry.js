@@ -7,10 +7,11 @@ function Entry({ symbol, data }) {
         {symbol}
       </div>
       <div>
+        {console.log(data)}
         {data ? data["quote"]["USD"]["price"] : ""}
       </div>
       <div>
-        -3.64 (-1.27%)
+        {data ? data["quote"]["USD"]["percent_change_1h"] : ""}
       </div>
     </div>
   );
