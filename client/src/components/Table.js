@@ -3,15 +3,17 @@ import Entry from "./Entry";
 
 function Table() {
   const [symbols, setSymbols] = useState(["BTC", "ETH", "DOGE"]);
+  const [data, setData] = useState({});
 
   // TODO: add user profiles to allow deleting/adding different symbols
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetch(`/api/coin?q=${symbols.join()}`)
-        console.log(data);
+        const response = await fetch(`/api/coin?q=${symbols.join()}`);
+        const result = await response.json();
+        setData(result["body"]["data"]);
       } catch (err) {
-        return console.error(err)
+        return console.error(err);
       }
     };
     fetchData();
@@ -19,7 +21,7 @@ function Table() {
 
   const symbolEntries = symbols.map((symbol) => 
     <div key={symbol}>
-      <Entry symbol={symbol}/>
+      <Entry symbol={symbol} data={data[symbol]}/>
     </div>
   );
 
