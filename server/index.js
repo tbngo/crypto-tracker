@@ -9,7 +9,7 @@ const PORT = 3001;
 
 const limiter = rateLimit({
 	windowMs: 1000, // 1 second
-	max: 1, // limit each IP to 1 requests per windowMs
+	max: 1, // limit each IP to 1 request per windowMs
 })
 
 app.use(limiter)
