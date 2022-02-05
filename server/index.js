@@ -14,10 +14,6 @@ const limiter = rateLimit({
 
 app.use(limiter)
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
-
 // CoinMarketCap relay route
 app.get("/api/coin", async (req, res) => {
   try {
