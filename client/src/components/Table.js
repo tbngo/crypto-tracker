@@ -4,13 +4,10 @@ import Entry from "./Entry"
 function Table() {
   const [symbols, setSymbols] = useState([])
 
-  const getSymbols = () => {
-    setSymbols(["BTC", "ETH", "DOGE"]);
-  };
-
+  // TODO: add user profiles to allow deleting/adding different symbols
   useEffect(() => {
-    getSymbols();
-  });
+    setSymbols(["BTC", "ETH", "DOGE"]);
+  }, [symbols]);
 
   const symbolEntries = symbols.map((symbol) => 
     <div key={symbol}>
