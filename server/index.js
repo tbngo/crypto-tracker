@@ -1,15 +1,24 @@
 const express = require("express");
 const fetch = require("node-fetch");
+const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
 const app = express();
 
 const PORT = 3001;
 
+const limiter = rateLimit({
+	windowMs: 1000, // 1 second
+	max: 1, // limit each IP to 1 requests per windowMs
+})
+
+app.use(limiter)
+
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+// CoinMarketCap relay route
 app.get("/api/coin", async (req, res) => {
   try {
     const response = await fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=${req.query.q}`, {
